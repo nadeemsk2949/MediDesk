@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediDesk | Hospital Admin Panel</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="admin-layout">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">+</div>
+          <div>
+            <h1>MediDesk</h1>
+            <p>Hospital Administration</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button class="nav-link active" data-section="dashboard" type="button">Dashboard</button>
+          <button class="nav-link" data-section="patients" type="button">Patients</button>
+          <button class="nav-link" data-section="doctors" type="button">Doctors</button>
+          <button class="nav-link" data-section="appointments" type="button">Appointments</button>
+        </nav>
+      </aside>
+
+      <main class="content-area">
+        <header class="top-navbar">
+          <div>
+            <h2>Hospital Control Center</h2>
+            <p id="statusDate">Updated today</p>
+          </div>
+          <div class="user-chip">
+            <span class="user-dot"></span>
+            <span>Admin Desk</span>
+          </div>
+        </header>
+
+        <section id="dashboard" class="panel-section active">
+          <div class="section-heading">
+            <h3>Dashboard Overview</h3>
+            <p>Quick summary of current operations</p>
+          </div>
+
+          <div class="dashboard-cards">
+            <article class="metric-card">
+              <p>Total Patients</p>
+              <h4 id="totalPatients">0</h4>
+            </article>
+            <article class="metric-card">
+              <p>Total Doctors</p>
+              <h4 id="totalDoctors">0</h4>
+            </article>
+            <article class="metric-card">
+              <p>Appointments</p>
+              <h4 id="totalAppointments">0</h4>
+            </article>
+          </div>
+
+          <div class="table-card">
+            <div class="table-headline">
+              <h4>Upcoming Appointments</h4>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Patient</th>
+                  <th>Doctor</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="dashboardAppointmentRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="patients" class="panel-section">
+          <div class="section-heading">
+            <h3>Patient Management</h3>
+            <p>Add, edit, and remove patient records</p>
+          </div>
+
+          <form id="patientForm" class="data-form">
+            <input id="patientName" type="text" placeholder="Patient name" required />
+            <input id="patientAge" type="number" min="0" placeholder="Age" required />
+            <select id="patientGender" required>
+              <option value="" disabled selected>Gender</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Other">Other</option>
+            </select>
+            <input id="patientCondition" type="text" placeholder="Condition" required />
+            <button id="patientSubmit" type="submit">Add Patient</button>
+          </form>
+
+          <div class="table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Condition</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="patientRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="doctors" class="panel-section">
+          <div class="section-heading">
+            <h3>Doctor Management</h3>
+            <p>Maintain doctor details and departments</p>
+          </div>
+
+          <form id="doctorForm" class="data-form">
+            <input id="doctorName" type="text" placeholder="Doctor name" required />
+            <input id="doctorSpecialty" type="text" placeholder="Specialty" required />
+            <input id="doctorContact" type="text" placeholder="Contact number" required />
+            <button id="doctorSubmit" type="submit">Add Doctor</button>
+          </form>
+
+          <div class="table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Specialty</th>
+                  <th>Contact</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="doctorRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="appointments" class="panel-section">
+          <div class="section-heading">
+            <h3>Appointment Booking</h3>
+            <p>Book and review scheduled visits</p>
+          </div>
+
+          <form id="appointmentForm" class="data-form appointment-form">
+            <select id="appointmentPatient" required></select>
+            <select id="appointmentDoctor" required></select>
+            <input id="appointmentDate" type="date" required />
+            <input id="appointmentTime" type="time" required />
+            <input id="appointmentType" type="text" placeholder="Visit type" required />
+            <button type="submit">Book Appointment</button>
+          </form>
+
+          <div class="table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Patient</th>
+                  <th>Doctor</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Type</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="appointmentRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
